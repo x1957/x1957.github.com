@@ -8,7 +8,7 @@ categories: jekyll update
 测试
 测试
 
-{% highlight haskell %}
+{% highlight rkt %}
 --test
 putStrLn "Hello World!
 {% endhighlight %}
