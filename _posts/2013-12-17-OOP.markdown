@@ -1,0 +1,8 @@
+---
+layout: post
+title:  "OO的本质"
+date:   2013-12-17 23:33:11
+categories: jekyll update
+---
+
+TODO
