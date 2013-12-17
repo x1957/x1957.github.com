@@ -1,8 +1,14 @@
 ---
 layout: post
-title:  "OO的本质"
+title:  "Object in OOP"
 date:   2013-12-17 23:33:11
 categories: jekyll update
 ---
 
-TODO
+Object的定义:
+
+{% highlight racket %}
+(struct obj (fileds methods))
+{% endhighlight %}
+
+一个Object拥有的就是一个filds的list，和一个methods的list
