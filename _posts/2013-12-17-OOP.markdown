@@ -7,7 +7,7 @@ categories: jekyll update
 
 Object的定义:
 
-{% highlight racket %}
+{% highlight scheme %}
 (struct obj (fields methods))
 {% endhighlight %}
 
