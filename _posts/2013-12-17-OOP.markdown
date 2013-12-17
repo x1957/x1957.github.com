@@ -8,7 +8,7 @@ categories: jekyll update
 Object的定义:
 
 {% highlight racket %}
-(struct obj (fileds methods))
+(struct obj (fields methods))
 {% endhighlight %}
 
 一个Object拥有的就是一个filds的list，和一个methods的list
