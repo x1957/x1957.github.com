@@ -5,10 +5,97 @@ date:   2013-12-17 23:33:11
 categories: jekyll update
 ---
 
-Object的定义:
+我们经常见到的Object可不是这个样子的.
+
+{% highlight java %}
+class Point
+{
+    int x , y;
+    int getX()
+    {
+        return x;
+    }
+    int setX(int x)
+    {
+        this.x = x;
+    }
+    //same for y
+}
+
+Point p = new Point(1,2);
+p.getX();
+
+{% endhighlight %}
+
+通常我们把这个叫做封装
+
+> object.xx
+
+表示这个object的xx元素或者方法，多年以来我也这么看待OO(T_T
+
+其实Object的结构如下:
 
 {% highlight rkt %}
 (struct obj (fields methods))
 {% endhighlight %}
 
-一个Object拥有的就是一个filds的list，和一个methods的list
+一个Object拥有的就是一个filds的list，和一个methods的list。
+
+感觉挺像C++的虚函数的（不懂C++，光速逃.
+
+OO的本质不是<code>oo.xx</code>而是消息传递. <code>oo.xx(tt)</code>的本质应该是对oo这个对象发送xx这个消息,消息内容是tt.多年以来都被<code>oo.xx</code>这种形式给蒙蔽了T_T
+
+其实<code>Objective-C</code>的做法就很像了...<code>[oo :xx tt]</code>
+
+所以<code>oo.xx(tt)</code>的正确形式(?),应该是:
+
+<code>(send oo xx tt)</code>
+
+下面用racket简单实现了一个Object...(Coursera上面看的
+
+{% highlight rkt %}
+#lang racket
+;;;the definition of object
+;;;fileds,methods are mutable list
+(struct obj (fields methods))
+
+
+;;;helper functions
+(define (assoc-m v xs)
+  (if (null? xs) #f
+      (let ([head (car xs)]
+            [rest (cdr xs)])
+        (if (equal? (mcar head) v)
+            head
+            (assoc-m v rest)))))
+
+(define (get obj fld)
+  (let ([pr (assoc-m fld (obj-fields obj))])
+    (if pr (mcdr pr) (error "name not exist"))))
+
+(define (set obj fld v)
+  (let ([pr (assoc-m fld (obj-fields obj))])
+    (if pr (set-mcdr! pr v) (error "name not exist"))))
+
+(define (send obj msg . args)
+  (let ([pr (assoc msg (obj-methods obj))])
+    (if pr ((cdr pr) obj args) (error "function not exist"))))
+
+;;; define a class-like function
+(define (make-point x y)
+  (obj 
+   (list (mcons 'x x)
+         (mcons 'y y))
+   (list (cons 'get-x (lambda (self args) (get self 'x)))
+         (cons 'set-x (lambda (self args) (set self 'x (car args))))
+         (cons 'get-y (lambda (self args) (get self 'y)))
+         (cons 'set-y (lambda (self args) (set self 'y (car args)))))))
+
+;> (define p (make-point 1 2))
+;> (send p 'set-x 2)
+;> (send p 'get-x )
+;2
+;> (send p 'set-y 67)
+;> (send p 'get-y)
+;67
+{% endhighlight %}
