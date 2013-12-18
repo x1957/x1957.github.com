@@ -56,7 +56,7 @@ OO的本质不是<code>oo.xx</code>而是消息传递. <code>oo.xx(tt)</code>的
 {% highlight rkt %}
 #lang racket
 ;;;the definition of object
-;;;fileds,methods are mutable list
+;;;fileds are mutable list
 (struct obj (fields methods))
 
 
