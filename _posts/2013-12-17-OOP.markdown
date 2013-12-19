@@ -29,7 +29,7 @@ p.getX();
 
 通常我们把这个叫做封装
 
-> object.xx
+>object.xx
 
 表示这个object的xx元素或者方法，多年以来我也这么看待OO(T_T
 
