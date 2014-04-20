@@ -41,7 +41,9 @@ https://cgi.soic.indiana.edu/~c311/lib/exe/fetch.php?media=cps-notes.scm
 <code>
 Don't" sweat the small stuff!
 Small sutff is stuff we know will terminate right away.
+
 Don't sweat the small stuff if we know it will be evaluated.
+
 Don't sweat the small sutff if it might be evaluated, but instread pass it to k.
 </code>
 
