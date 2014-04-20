@@ -5,7 +5,7 @@ date:   2014-04-20 20:44:11
 categories: jekyll update
 ---
 
-##Continuation Passing Style(CPS)
+Continuation Passing Style(CPS)
 一个很有意思的东西
 
 我的理解大概就是传递what is the next，下一步做啥作为了一个参数。
@@ -38,14 +38,14 @@ https://cgi.soic.indiana.edu/~c311/lib/exe/fetch.php?media=cps-notes.scm
 
 在这个lecture上面讲的比较清楚。
 
-<code>
-Don't" sweat the small stuff!
-Small sutff is stuff we know will terminate right away.
 
-Don't sweat the small stuff if we know it will be evaluated.
+<code>Don't" sweat the small stuff!</code>
 
-Don't sweat the small sutff if it might be evaluated, but instread pass it to k.
-</code>
+<code>Small sutff is stuff we know will terminate right away.</code>
+
+<code>Don't sweat the small stuff if we know it will be evaluated.</code>
+
+<code>Don't sweat the small sutff if it might be evaluated, but instread pass it to k.</code>
 
 记住每个CPS风格的函数最后的参数都是continuate！
 
