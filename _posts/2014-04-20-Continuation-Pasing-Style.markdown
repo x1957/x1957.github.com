@@ -52,3 +52,28 @@ https://cgi.soic.indiana.edu/~c311/lib/exe/fetch.php?media=cps-notes.scm
 就是说你接下来要做的，就是说你这个函数结束要做的！
 
 然后就是普通代码到CPS代码的转换T_T，这个我还需要看下。
+
+
+下面是一个使用call/cc暴露continuation实现的一个简单的generator
+
+{% highlight Scheme %}
+
+#lang racket
+(define call/cc call-with-current-continuation)
+
+(define (gen lst)
+  (define (get-next return)
+    (for-each
+     (lambda (ele)
+             (call/cc (lambda(now)
+                      (set! get-next now)
+                      (return ele))))
+     lst)
+    (return 'end-of-the-list))
+  (define (next)
+    (call/cc (lambda (return)
+               (get-next return))))
+  next)
+
+
+{% endhighlight %}
