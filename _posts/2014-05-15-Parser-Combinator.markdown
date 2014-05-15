@@ -84,7 +84,7 @@ instance MonadPlus Parser where
 
 2. Concatenation
 {% highlight Haskell %}
-p `seq` q = Parser (\cs -> [ (do-sth-on a' a'' , cs'')|(a',cs') <-parser p cs ,(a'',cs'') <- parser q cs'])
+p `seq` q = Parser (\cs -> [ (do-sth-on a' a'' , cs'')|(a',cs') <-parse p cs ,(a'',cs'') <- parse q cs'])
 {% endhighlight %}
 大概是这样吧，其实很少用到，感觉我们都是用monad的>>=就ok.
 
@@ -102,4 +102,7 @@ many1 p =  do
 很简单吧！
 ---
 哪天无聊了接着写
+PS.
+
+parse (Parser a) = a
 
