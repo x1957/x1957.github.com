@@ -31,7 +31,7 @@ item = Parser (\cs -> case cs of
                         (c:cs) -> [(c,cs)])
 {% endhighlight %}
 
-
+Parser Monad定义
 {% highlight Haskell %}
 instancd Monad Parser where
      return a = Parser (\cs -> [(a,cs)])
@@ -80,8 +80,26 @@ instance MonadZero Parser where
 instance MonadPlus Parser where
     p ++ q = Parser (\cs -> parse p cs ++ parser q cs)
 {% endhighlight %}
+这个infix的(++)操作就是alternation啦！
+
 2. Concatenation
+{% highlight Haskell %}
+p `seq` q = Parser (\cs -> [ (do-sth-on a' a'' , cs'')|(a',cs') <-parser p cs ,(a'',cs'') <- parser q cs'])
+{% endhighlight %}
+大概是这样吧，其实很少用到，感觉我们都是用monad的>>=就ok.
 
 3. Kleene star closure
+{% highlight Haskell %}
+many :: Parser a -> Parser [a]
+many p = many1 p ++ return []
 
+many1 :: Parser a -> Parser[a]
+many1 p =  do
+       a <- p
+       as <- many p
+       return (a:as)
+{% endhighlight %}
+很简单吧！
+---
+哪天无聊了接着写
 
