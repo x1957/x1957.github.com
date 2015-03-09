@@ -95,7 +95,7 @@ func (s *server) DoAdd1(ctx context.Context, intx *pb.Int) (*pb.Int, error) {
 	return out, nil
 }
 
-{% endhighlight% }
+{% endhighlight %}
 
 简单把，就是实现这个DoAdd1就好了哦。。。
 
@@ -136,7 +136,7 @@ func main() {
 	}
 	log.Printf("%d\n", r.Num)
 }
-{% endhighlight% }
+{% endhighlight %}
 
 非常方便的一个框架！
 
