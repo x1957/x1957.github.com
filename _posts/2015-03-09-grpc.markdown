@@ -29,7 +29,7 @@ categories: jekyll update
 
 然后就开始开心的写demo了
 
-{% highlight go %}
+{% highlight Python %}
 
 syntax = "proto3";
 
@@ -55,7 +55,7 @@ message Int {
 
 然后我们来写server端
 
-{% highlight go %}
+{% highlight Python %}
 
 package main
 
@@ -101,7 +101,7 @@ func (s *server) DoAdd1(ctx context.Context, intx *pb.Int) (*pb.Int, error) {
 
 看看client的代码
 
-{% highlight go %}
+{% highlight Python %}
 package main
 
 import (
@@ -140,7 +140,7 @@ func main() {
 
 非常方便的一个框架！
 
-{% highlight shell %}
+{% highlight Python %}
 APTX4869:grpc_test x1957$ go run server.go
 2015/03/09 12:49:18 server...
 2015/03/09 12:49:40 add
