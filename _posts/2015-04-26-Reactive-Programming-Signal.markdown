@@ -47,7 +47,7 @@ protected def update(expr: => T): Unit = {
 
 可以看到在赋予Signal新值的时候，我们首先是把它从指向它的obsered里面删除掉。然后作为一个新值，还没有指向他的Signal，oberved = Nil
 
-好，重点来了<code>val newValue = caller.withValue(this)(myExpr())</code>，这里我们使用了DynamicVariable，可以简单理解为一个线程安全的stack吧。计算时把上下文设置为当前Signal(withValue(this))。然后开始计算当前Signal的expr。
+ok,重点来了<code>val newValue = caller.withValue(this)(myExpr())</code>，这里我们使用了DynamicVariable，可以简单理解为一个线程安全的stack吧。计算时把上下文设置为当前Signal。然后开始计算当前Signal的expr。
 
 expr是个函数或者说就是一段代码，比如
 {% highlight Scala %}
