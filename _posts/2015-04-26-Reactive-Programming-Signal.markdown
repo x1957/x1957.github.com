@@ -67,7 +67,7 @@ expr是个函数或者说就是一段代码，比如
 
 其中caller.value其实就是当前我们调用<code>call.withValue(this)(myExpr())</code>里面的this，比如<code>s() = a() + b() + 2</code>，这个caller.value就是s，因此s是a，b的observers,因为a，b的值改变都需要通知s。而a，b是s的observed。
 
-所以我们在计算<code>call.withValue(this)(myExpr())</code>的同时也更新了this的observers，问题解决！
+所以我们在计算<code>call.withValue(this)(myExpr())</code>的同时也更新了指向this的Signal的observers，问题解决！
 
 
 有人问
