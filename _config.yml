@@ -1,4 +1,4 @@
 name: 1957's blog
-markdown: rdiscount
+markdown: kramdown
 permalink: /blog/:title
 pygments: true
