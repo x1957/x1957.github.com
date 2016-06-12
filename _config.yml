@@ -2,3 +2,4 @@ name: 1957's blog
 markdown: kramdown
 permalink: /blog/:title
 pygments: true
+highlighter: rouge
